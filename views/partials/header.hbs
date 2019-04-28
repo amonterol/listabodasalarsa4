@@ -1,0 +1,40 @@
+      <div class="row  mt-2 mb-2 flex-nowrap align-items-sm-center align-items-md-center  justify-content-between  bg-white ">
+        
+        
+        <div class="col-2 p-1 my-1 ml-5 align-self-center">
+          <img src="/images/fotoAlarsa.jpg" alt="Alarsa S.A." height="90" width="90" >
+        </div>
+        
+        <div class="col-3">
+          
+          <nav class="row justify-content-between align-items-center my-2 my-md-0 mr-md-0">
+            <a class="p-2 text-dark"  href="#">Home</a>
+            <a class="p-2 text-dark" href="#">Listas de bodas</a>
+            <a class="p-2 text-dark" href="#">Contacto</a>
+          </nav>
+        </div>  
+        <div class="col-2  align-self-center justify-content-end">
+         <ul class="nav navbar-nav navbar-center">
+                <li>
+                    <a href="/shopping-cart/">
+                        <i class="fa fa-shopping-cart" aria-hidden="true"></i> Shopping Cart
+                        <span class="badge">{{session.cart.totalQty}}</span>
+                    </a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user" aria-hidden="true"></i> User Management <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        {{# if login }}
+                            <li><a href="/user/profile">User Account</a></li>
+                            <li role="separator" class="divider"></li>
+                            <li><a href="/user/logout">Logout</a></li>
+                        {{ else }}
+                            <li><a href="/user/signup">Sign up</a></li>
+                            <li><a href="/user/signin">Sign in</a></li>
+                        {{/if}}
+                        
+                    </ul>
+                </li>
+            </ul>
+        </div>
+      </div>
