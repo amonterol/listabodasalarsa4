@@ -1,11 +1,20 @@
-var express = require('express');
-var router = express.Router();
+//Importamos modulos de terceros requeridos
+const express = require('express');
+const router = express.Router();
+
+//Importamos archivos propios de la aplicacion
+const listasController = require('../controllers/listasController');
+//Importamos y creamos una instancia del objeto capturaErrores
+const { capturaErrores } = require('../handlers/errorHandlers');
 
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-      res.render('shop/index', { title: 'Shopping Cart!'});
-    });
+/* Definimos la respuesta cuando un  GET request es hecho a la pagina de 
+inicio de la aplicacion, en este caso renderizamos la pagina index del directorio
+shop*/
+router.get('/', listasController.homepage);
+router.get('/agregarLista', listasController.agregarListaBodas);
+router.post('/agregarLista', capturaErrores(listasController.crearListaBodas));
 
 
-  module.exports = router;
+//Exportamos el modulo para que pueda ser usado en la aplicacion app.js
+module.exports = router;

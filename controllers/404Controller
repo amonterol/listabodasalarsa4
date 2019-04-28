@@ -1,0 +1,14 @@
+/*
+  Manejador de los recursos solicitados no encontrados
+
+  En el caso de que una ruta o recurso solicitado no este disponible
+  en la aplicacion sera identificado con el codigo 404 y pasado a la vista
+  adecuada para su despliegue al usuario
+*/
+
+export.noEncontrado = (req, res, next) => {
+    const err = new Error('El recurso solicitado no fue encontrado);
+    err.status = 404;
+    next(err);
+}
+
