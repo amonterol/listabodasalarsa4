@@ -28,11 +28,11 @@
     "express-handlebars": "^3.0.2",
     "express-session": "^1.16.1",
     "express-validator": "^5.3.1",
-    "flash": "^1.1.0",
     "jquery": "^3.4.0",
     "mongoose": "^5.5.4",
     "passport": "^0.4.0",
-    "popper.js": "^1.15.0"
+    "popper.js": "^1.15.0",
+    "serve-static": "^1.13.2"
   },
   "devDependencies": {
     "nodemon": "^1.18.11"

@@ -7,7 +7,12 @@ const mongoose = require('mongoose');
 const Lista = require('../models/Lista');
 
 exports.homepage = (req, res, next) => {
+   // req.flash('error', 'Something Happened');
+   // req.flash('info', 'Something Happened');
+   // req.flash('warning', 'Something Happened');
+   // req.flash('success', 'Something Happened');
     res.render('shop/index');
+    res.end();
 };
 
 
@@ -21,6 +26,16 @@ exports.crearListaBodas = async (req, res, next) => {
   await lista.save(); // Almacenamos en mongodb la lista creada
   //console.log(req.body);//Solo para corroborar el funcionamiento
   //res.json(req.body); //Solo para corroborar el funcionamiento
-  res.redirect('/');
+  //req.flash('success', 'Succesfully Created' );
+   return res.redirect('/');
+  
     
+};
+
+// nombre de la propiedad : nombre de la variable
+exports.obtenerListasBodas = async (req, res, next) => {
+  const listas = await Lista.find();
+  console.log(listas);
+  res.render('shop/listas', {title: 'Listas', listas: listas});
+  res.end();
 };

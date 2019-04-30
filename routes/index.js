@@ -11,7 +11,8 @@ const { capturaErrores } = require('../handlers/errorHandlers');
 /* Definimos la respuesta cuando un  GET request es hecho a la pagina de 
 inicio de la aplicacion, en este caso renderizamos la pagina index del directorio
 shop*/
-router.get('/', listasController.homepage);
+router.get('/', capturaErrores(listasController.homepage));
+router.get('/listas', listasController.obtenerListasBodas)
 router.get('/agregarLista', listasController.agregarListaBodas);
 router.post('/agregarLista', capturaErrores(listasController.crearListaBodas));
 
