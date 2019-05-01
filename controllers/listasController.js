@@ -3,39 +3,35 @@
   el metodo homepage renderiza el archivo index del directorio shop
 */
 const mongoose = require('mongoose');
-//const Lista = mongoose.model('Lista'); //Lista viene del modelo Listas.js
-const Lista = require('../models/Lista');
+const Lista    = require('../models/Lista');
 
-exports.homepage = (req, res, next) => {
-   // req.flash('error', 'Something Happened');
-   // req.flash('info', 'Something Happened');
-   // req.flash('warning', 'Something Happened');
-   // req.flash('success', 'Something Happened');
-    res.render('shop/index');
-    res.end();
+exports.homepage = async (req, res, next) => {
+  const listas = await Lista.find();
+  console.log(listas);  
+  res.render('shop/index', {title: 'Listas', listas: listas});
 };
 
-
+//Controlador de la vista agregarLista que nos mostrar el formulario
+//para tomar los datos de una nueva lista de bodas.
 exports.agregarListaBodas = (req, res, next) => {
     res.render('shop/agregarLista', {title: 'Agregar Lista'});
 };
 
-//Usamos composicion
+//Controlador de la vista crearListaBodas que nos permie almacenar
+//en la base de datos la nueva lista de bodas. 
 exports.crearListaBodas = async (req, res, next) => {
   const lista = new Lista(req.body);
-  await lista.save(); // Almacenamos en mongodb la lista creada
+  await lista.save(); // Almacenamos la nueva lista en mongodb 
   //console.log(req.body);//Solo para corroborar el funcionamiento
   //res.json(req.body); //Solo para corroborar el funcionamiento
-  //req.flash('success', 'Succesfully Created' );
-   return res.redirect('/');
-  
-    
+  res.redirect('shop/agregarProducto');
 };
 
-// nombre de la propiedad : nombre de la variable
+//Controlador de la vista listas en el cual se muestran todas
+//las listas de bodas almancenadas en la base de datos 
+//lista:listas -> nombre de la propiedad : nombre de la variable
 exports.obtenerListasBodas = async (req, res, next) => {
   const listas = await Lista.find();
   console.log(listas);
   res.render('shop/listas', {title: 'Listas', listas: listas});
-  res.end();
 };

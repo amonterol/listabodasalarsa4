@@ -10,7 +10,6 @@ const passport = require('passport');
 //const promisify = require('es6-promisify');
 const flash = require('connect-flash');
 const expressValidator = require('express-validator');
-var serveStatic = require('serve-static')
 
 
 
@@ -39,6 +38,7 @@ console.error( '${err.message}');
 
 //Importamos todos los modelos definidos
 require('./models/Lista');
+require('./models/Producto');
 
 
 
@@ -62,16 +62,9 @@ Para utilizar los archivos estáticos como imágenes, archivos CSS y archivos Ja
 usamos la función de middleware incorporada express.static de Express.
 Por lo cual es necesario almacenarlos en el directorio "public"
 */
-
 app.use('/static', express.static(path.join(__dirname, 'public')));
-
+app.use('/css', express.static(path.join(__dirname , 'public/css')));
 app.use('/images', express.static(path.join(__dirname , 'public/images')));
-
-app.use('/parejas', express.static(path.join(__dirname , 'public/images/parejas')));
-
-app.use('/styles', express.static(path.join(__dirname , 'public/styles')));
-
-
 
 /*
 Presenta varios metodos que nos permiten validar los datos
@@ -89,19 +82,6 @@ Presenta varios metodos que nos permiten validar los datos
 //Flash.js nos permite construir mensajes para enviar al usuario
 //app.use(flash());
 
-//Este middleware permite recolectar todas las variables de cada 
-//solicitud de recursos "req" y pasarlas a cualquier de las vistas
-//a traves de locals, es decir las variables disponibles en cada vista
-/*
-app.use((req, res, next) => {
-  res.locals.h = helpers;
-  res.locals.flashes = req.flash();
-  res.locals.user = req.user || null;
-  res.locals.currenthPath = req.path;
-  next();
-});
-*/
-
 //Este middleware se utiza para manejar la ruta o endpoint del homepage
 app.use('/', indexRouter);
 
@@ -111,19 +91,17 @@ app.use('/', indexRouter);
 app.use(errorHandlers.notFound);
 
 //Nos permite manejar el caso de errores de validacion
-//app.use(errorHandlers.flashValidationErrors);
+app.use(errorHandlers.flashValidationErrors);
 
 //Manejador de errores no contemplados 
-
 if(process.env.MODE_ENV == 'development') {
     app.use(errorHandlers.developmentErrors);
 }
 
 //Manejador de errores en "produccion"
-//app.use(errorHandlers.productionErrors);
+app.use(errorHandlers.productionErrors);
 
 // error handler
-/*
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
@@ -133,11 +111,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-*/
-
 
 //Iniciamos el servidor 
-app.listen(process.env.PORT, () => {
-  console.log(`Example app listening on port ${ process.env.PORT }`);
-});
+app.listen(process.env.PORT, () => console.log(`Example app listening on port ${process.env.PORT}!`));
 

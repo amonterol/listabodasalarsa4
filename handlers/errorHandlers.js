@@ -40,7 +40,7 @@ exports.capturaErrores = (funcionEnControllador) => {
     MongoDB Validation Error Handler
     Detect if there are mongodb validation errors that we can nicely show via flash messages
   */
-  /*
+  
   exports.flashValidationErrors = (err, req, res, next) => {
     if (!err.errors) return next(err);
     // validation errors look like
@@ -48,13 +48,12 @@ exports.capturaErrores = (funcionEnControllador) => {
     errorKeys.forEach(key => req.flash('error', err.errors[key].message));
     res.redirect('back');
   };
-  */
+  
   
   /*
     Development Error Handler
     In development we show good error messages so if we hit a syntax error or any other previously un-handled error, we can show good info on what happened
   */
- 
   exports.developmentErrors = (err, req, res, next) => {
     err.stack = err.stack || '';
     const errorDetails = {
@@ -77,7 +76,6 @@ exports.capturaErrores = (funcionEnControllador) => {
     Production Error Handler
     No stacktraces are leaked to user
   */
- /*
   exports.productionErrors = (err, req, res, next) => {
     res.status(err.status || 500);
     res.render('error', {
@@ -85,4 +83,3 @@ exports.capturaErrores = (funcionEnControllador) => {
       error: {}
     });
   };
-  */
