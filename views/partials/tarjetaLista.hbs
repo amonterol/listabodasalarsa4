@@ -1,23 +1,17 @@
 
-  <a href="/productoEnLista">
-  <div class="card"  >
-     <img class="card-img img-responsive" src="http://localhost:3000/images/parejas/pareja1.png" alt="{{this.name}}" style="width: 100%" >  
-    
-    <div class="card-img-overlay hover-card  ">
-       
-     <h4 class="top">{{this.name}}</h4> 
+  <!-- <a href="/productoEnLista"> utilizado para mostrar productos de una listaa-->
+  <!-- <a href="/{{this.id}}/modificarLista">  -->
+  <!-- <a href="/modificarLista/{{this.id}}"> -->
+  <a href="/detalleLista/{{this.id}}">
+    <!--utilizado para mostrar pagina para modificar lista -->
+    <div class="card">
+      <img class="card-img img-responsive" src="http://localhost:3000/images/parejas/pareja1.png" alt="{{this.name}}"
+        style="width: 100%">
+  
+      <div class="card-img-overlay hover-card  ">
+  
+        <h4 class="top">{{this.name}}</h4>
+      </div>
+  
     </div>
-    <!-- 
-    <div class="card-body">
-      <h4 class="card-title">{{this.name}}</h4>
-     <label for="fecha">Fecha del evento</label>
-      <p class="card-text">{{this.fecha}}</p>
-      <label for="lugar">Lugar del evento</label>
-      <p class="card-text">{{this.lugar}}</p>
-      <label for="fecha">Estado de la lista</label>
-      <p class="card-text">{{this.estado}}</p>
-      <a href="#" class="btn btn-primary stretched-link">Ver lista de bodas</a>
-    </div>
-    -->
-  </div>
-  </a> 
+  </a>

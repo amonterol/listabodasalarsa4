@@ -1,0 +1,13 @@
+<form action=`/agregarLista/${lista._id || ''}` method=POST class="card">
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name" value="{{lista.name}}"">
+    <label for="lugar">Lugar</label>
+    <input type="text" name="lugar" id="lugar" value="{{lista.lugar}}">
+    <label for="fecha">Fecha</label>
+    <input type="text" name="fecha" id="fecha" value="{{lista.fecha}}">
+    <label for="estado">Estado</label>
+    <input type="text" name="estado" id="estado" value="{{lista.estado}}">
+    <label for="imagen">Imagen</label>
+    <input type="text" name="imagen" id="imagen" value="{{lista.imagen}}">
+    <input type="submit" value="Modificar ->" class="button">
+</form>

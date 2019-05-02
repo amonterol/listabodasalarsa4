@@ -1,0 +1,43 @@
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 bg-white">
+            <div class="card">
+                <img class="card-img img-responsive" src="http://localhost:3000/images/parejas/pareja1.png"
+                    alt="{{this.name}}" style="width: 100%">
+
+                <div class="card-img-overlay hover-card  ">
+                    <h4 class="top">{{lista.name}}</h4>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-sm-6 bg-white">
+            <h5>Fecha del evento: {{lista.fecha}}</h5>
+            <h5>Lugar: {{lista.lugar}}</h5>
+        </div>
+    </div>
+</div>
+
+<hr class="featurette-divider">
+
+<h1>AQUI VA LA LISTA DE PRODUCTOS</h1>
+<!-- Aqui van los productos asociados a cada lista de bodas, los que se muestran no estan asociados todavia -->
+<div class="container">
+ 
+    <!-- <div class="container-fluid" style="width:100%"> -->
+        <div class="card-columns" style="width: 100%" >
+    
+            {{# each productos}} 
+
+                {{> tarjetaProducto}}
+        
+            {{/each}} 
+
+        </div>
+    <!-- </div> -->
+</div>
+
+ 
+    
+ 

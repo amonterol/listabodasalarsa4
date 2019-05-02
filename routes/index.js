@@ -22,6 +22,18 @@ router.get('/listas', listasController.obtenerListasBodas);
 router.get('/agregarLista', listasController.agregarListaBodas);
 router.post('/agregarLista', capturaErrores(listasController.crearListaBodas));
 
+/* Ruta para rederizar el detalla de la lista, cuando el usuario hace click en una lista
+la respuesta sera enviarlo a la pagina "detalleLista" que muestra la informacion del evento
+de la boda y los productos asociados a la lista seleccionada*/
+router.get('/detalleLista/:id', listasController.obtenerLista);
+
+
+router.get('/modificarLista/:id', listasController.obtenerLista);
+router.post('/modificarLista/:id', capturaErrores(listasController.actualizarLista));
+
+
+
+
 /* Definimos la respuesta cuando un  GET request es hecho a la pagina de 
 inicio de la aplicacion, en este caso renderizamos la pagina index del directorio
 shop*/

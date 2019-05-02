@@ -7,7 +7,7 @@ const Lista    = require('../models/Lista');
 
 exports.homepage = async (req, res, next) => {
   const listas = await Lista.find();
-  console.log(listas);  
+  //console.log(listas);  
   res.render('shop/index', {title: 'Listas', listas: listas});
 };
 
@@ -32,6 +32,40 @@ exports.crearListaBodas = async (req, res, next) => {
 //lista:listas -> nombre de la propiedad : nombre de la variable
 exports.obtenerListasBodas = async (req, res, next) => {
   const listas = await Lista.find();
-  console.log(listas);
+  //console.log(listas);
   res.render('shop/listas', {title: 'Listas', listas: listas});
 };
+
+
+//Controlador de la vista modificarListaBodas en el cual se puede actualizar
+//la informacion de alguna de las listas registradas en la BD
+//lista:listas -> nombre de la propiedad : nombre de la variable
+exports.obtenerLista = async (req, res, next) => {
+  var productId = req.params.id;
+  const lista = await Lista.findById( productId );
+  console.log(lista);
+  res.render('shop/detalleLista', {title: `Detalle de Lista  ${lista._id}`, lista:lista});
+ 
+};
+
+/*Aun no probado*/
+exports.actualizarLista = async (req, res, next) => {
+  var productId = req.params.id;
+  const lista = await Lista.findOneAndUpdate( productId, 
+    req.body, {
+      new: trie,
+      runValidators: true,
+    }).exec();
+  res.redirect(`/lista/${lista.id}`);
+  };
+    /*
+  const lista = await Lista.findOneAndUpdate({ 
+    _id: req.params.id }, 
+    req.body, {
+      new: true,
+      runValidators: true,
+    }).exec();
+  res.redirect(`/lista/${lista.id}/edit`);
+ 
+};
+*/
