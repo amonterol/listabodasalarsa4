@@ -19,6 +19,7 @@ const expressValidator = require('express-validator');
 const indexRouter = require('./routes/index');
 const helpers = require('./helpers');
 const errorHandlers = require('./handlers/errorHandlers');
+require('./handlers/passport');
 
 
 //app es una instancia de express la cual nos permite hacer la conexion al servidor
@@ -29,7 +30,7 @@ require('dotenv').config({path:'variables.env'});
 
 //Connexion a la base de datos
 // Connect to our Database and handle any bad connections
-mongoose.connect(process.env.DATABASE, {useNewUrlParser: true });
+mongoose.connect(process.env.DATABASE, {useNewUrlParser: true, useCreateIndex: true });
 mongoose.Promise = global.Promise; // Tell Mongoose to use ES6 promises
 mongoose.connection.on('error', (err) => {
 console.error( '${err.message}');
@@ -39,6 +40,7 @@ console.error( '${err.message}');
 //Importamos todos los modelos definidos
 require('./models/Lista');
 require('./models/Producto');
+require('./models/Usuario');
 
 
 
@@ -69,7 +71,7 @@ app.use('/images', express.static(path.join(__dirname , 'public/images')));
 /*
 Presenta varios metodos que nos permiten validar los datos
 */
-//app.use(expressValidator());
+app.use(expressValidator());
 
 //Permite llenar con informacion cualquier cokies que acompanen un "request"
 //app.use(cookieParser);

@@ -1,6 +1,5 @@
 /*
-  Este archivo el controlador de la pagina inicial de la aplicacion,
-  el metodo homepage renderiza el archivo index del directorio shop
+  Este archivo 
 */
 const mongoose = require('mongoose');
 const Lista    = require('../models/Lista');
@@ -69,3 +68,4 @@ exports.actualizarLista = async (req, res, next) => {
  
 };
 */
+
