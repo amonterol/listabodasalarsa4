@@ -49,12 +49,19 @@ router.post('/agregarProducto', productosController.crearProducto);
 
 /* Ruta para renderizar el formulario de login*/
 router.get('/loginForm', usuarioController.loginForm);
+router.post('/usuario/loginForm', authController.login);
+
+router.get('/logoutForm', authController.logout);
+
+
 router.get('/registerForm', usuarioController.registerFormGet);
 router.post('/usuario/registerForm',
  usuarioController.validateRegister,
- usuarioController.register
- //authController.login
+ usuarioController.register,
+ authController.login
 );
+
+
 
 //Exportamos el modulo para que pueda ser usado en la aplicacion app.js
 module.exports = router;

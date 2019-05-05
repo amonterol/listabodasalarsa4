@@ -34,13 +34,14 @@
                     <ul class="dropdown-menu">
                         
                         {{# if login }}
-                         <li><a href="/usuario/profile">User Account</a></li>
+                         <li><a href="/profile/">User Account</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="/usuario/logoutForm">Logout</a></li>
+                            <li><a href="/logoutForm/">Logout</a></li>
                             
                         {{ else }}
-                            <a  class="dropdown-item" href="/usuario/registerForm">Register</a>
-                            <a  class="dropdown-item" href="/usuario/loginForm">Login</a>
+                            <a  class="dropdown-item" href="/registerForm/">Register</a>
+                            <a  class="dropdown-item" href="/loginForm/">Login</a>
+                            <a  class="dropdown-item" href="/logoutForm/">Logout</a>
                         {{/if}}
                         
                     </ul>

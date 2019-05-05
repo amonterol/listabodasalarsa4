@@ -23,7 +23,8 @@ exports.crearListaBodas = async (req, res, next) => {
   await lista.save(); // Almacenamos la nueva lista en mongodb 
   //console.log(req.body);//Solo para corroborar el funcionamiento
   //res.json(req.body); //Solo para corroborar el funcionamiento
-  res.redirect('shop/agregarProducto');
+  //req.flash('success', `Successfully created ${lista.name}`);
+  res.redirect('/');
 };
 
 //Controlador de la vista listas en el cual se muestran todas

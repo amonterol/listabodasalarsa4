@@ -1,15 +1,16 @@
-var mongoose = require('mongoose');
-
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 mongoose.Promise = global.Promise;
-//const md5 = require('md5');
+const md5 = require('md5');
 const validator = require('validator');
-const mongodbErrorHandler = require( 'mongoose-mongodb-errors' );
+const mongodbErrorHandler = require( 'mongoose-mongodb-errors' ); 
 const passportLocalMongoose = require('passport-local-mongoose');
 
 
 //var bcrypt = require('bcrypt-nodejs');
 
-var usuarioSchema = mongoose.Schema({
+
+const usuarioSchema = new Schema({
 
   email: {
     type: String,
@@ -27,14 +28,7 @@ var usuarioSchema = mongoose.Schema({
 });
 
 usuarioSchema.plugin(passportLocalMongoose, {usernameField: 'email'});
-usuarioSchema.plugin(mongodbErrorHandler,);
-/*
-  userSchema.methods.encryptPassword = function(password) {
-    return bcrypt.hashSync(password, bcrypt.genSaltSync(5), null);
-  };
+usuarioSchema.plugin(mongodbErrorHandler);
 
-  userSchema.methods.validPassword = function(password) {
-    return bcrypt.compareSync(password, this.password);
-  };
-*/
+
 module.exports = mongoose.model('Usuario', usuarioSchema);

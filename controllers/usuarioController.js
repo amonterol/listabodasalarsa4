@@ -1,9 +1,12 @@
 /*
   Este archivo 
 */
+
 const mongoose = require('mongoose');
 const Usuario = require('../models/Usuario');
-const {promisify} = require('es6-promisify');
+
+const promisify = require('es6-promisify');
+
 
 
 exports.loginForm = (req, res, next) => {
@@ -42,6 +45,8 @@ exports.validateRegister = (req, res, next) => {
     
     };
 
+/*
+
 exports.register = async (req, res, next) => {
 
     console.log('registering user');
@@ -56,25 +61,14 @@ exports.register = async (req, res, next) => {
     
   });
 };
-
-
-
-/*
-exports.register = async (req, res, nect) => {
-    console.log('registering user');
-    
-    
-    
-    const newUsuario = new Usuario({
-        email: req.body.email,
-        nombre: req.body.nombre 
-    });
-    await Usuario.register(newUsuario, req.body.password);
-    console.log('It works!');
-    next()
-    //const registerFormPost = promisify( Usuario.registerFormPost);
-   // await registerFormPost( usuario, req.body.password);
-    //console.log('It works!');
-    //next(); // pass to authController.login
-};
 */
+
+
+exports.register = async (req, res, next) => {
+    const usuario = new Usuario({email: req.body.email, nombre: req.body.nombre});
+    const register = promisify(Usuario.register, Usuario);
+    await register(usuario, req.body.password);
+    next();
+};
+
+
